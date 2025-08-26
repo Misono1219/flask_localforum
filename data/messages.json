@@ -1,0 +1,57 @@
+[
+   {
+      "id": 5,
+      "text": "おやすみなさい",
+      "created_at": "2025-08-26 13:39:15",
+      "author": "me",
+      "important": false,
+      "comments": [],
+      "good": 1
+   },
+   {
+      "id": 3,
+      "text": "こんばんわ",
+      "created_at": "2025-08-22 15:54:41",
+      "author": "assistant",
+      "important": false,
+      "comments": [
+         {
+            "author": "guest",
+            "text": "how are you?",
+            "created_at": "2025-08-22 15:55:11"
+         }
+      ],
+      "good": 4
+   },
+   {
+      "id": 2,
+      "text": "こんにちは",
+      "created_at": "2025-08-22 15:54:24",
+      "author": "guest",
+      "important": false,
+      "comments": [
+         {
+            "author": "me",
+            "text": "hi",
+            "created_at": "2025-08-22 15:54:57"
+         }
+      ],
+      "good": 1,
+      "updated_at": "2025-08-22 15:55:37"
+   },
+   {
+      "id": 1,
+      "text": "おはようございます",
+      "created_at": "2025-08-22 15:07:51",
+      "author": "me",
+      "important": false,
+      "comments": [
+         {
+            "author": "assistant",
+            "text": "hello",
+            "created_at": "2025-08-22 15:54:46"
+         }
+      ],
+      "good": 4
+   }
+]

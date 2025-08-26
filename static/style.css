@@ -1,0 +1,101 @@
+/* ===== 基本レイアウト ===== */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: system-ui, sans-serif;
+  max-width: 880px;
+  margin: 2rem auto;
+  line-height: 1.6;
+  background: #f0f9f0; /* 薄い緑 */
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+ul { list-style: none; padding: 0; margin: 0; }
+
+/* ===== カード／メタ情報 ===== */
+li.card, .card {
+  background: #fff;
+  border: 1px solid #e3e8e3;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 5px rgba(0,0,0,.06);
+}
+.meta {
+  color: #666;
+  font-size: .92rem;
+  margin-bottom: .5rem;
+}
+
+/* ===== ボタン/リンク ===== */
+button {
+  border: none;
+  border-radius: 8px;
+  padding: .45rem .7rem;
+  cursor: pointer;
+  background: #4caf50;  /* メイン緑 */
+  color: #fff;
+}
+button:hover { background: #45a049; }
+a { color: #2e7d32; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* 危険操作用（削除） */
+form.inline button.delete,
+button.delete {
+  background: #dc3545;
+}
+form.inline button.delete:hover,
+button.delete:hover {
+  background: #c82333;
+}
+
+/* ===== コントロール行 ===== */
+.controls {
+  margin-top: .5rem;
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* ===== フォーム要素 ===== */
+textarea {
+  width: 100%;
+  min-height: 8rem;
+  border: 1px solid #a5d6a7;
+  border-radius: 8px;
+  padding: .5rem;
+  background: #fff;
+}
+input[type="text"] {
+  padding: .3rem .5rem;
+  border: 1px solid #a5d6a7;
+  border-radius: 4px;
+  background: #fff;
+}
+
+/* ===== コメント周り ===== */
+.comment-list {
+  background: #eafaea;
+  padding: .5rem;
+  border-radius: 6px;
+  margin-top: .5rem;
+  border: 1px solid #d7edd7;
+}
+.comment-list li { font-size: .9rem; margin: .25rem 0; }
+
+.comment-form {
+  margin-top: .5rem;
+  display: flex;
+  gap: .5rem;
+}
+.comment-form input[type="text"] { flex: 1; }
+.comment-form button { border-radius: 4px; padding: .3rem .6rem; }
+
+/* ===== お好みで：本文の改行保持に付けるクラス ===== */
+.prewrap { white-space: pre-wrap; }

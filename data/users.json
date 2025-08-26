@@ -1,0 +1,26 @@
+{
+  "me": {
+    "password": "scrypt:32768:8:1$Q8k2mF5TXE2X96x4$70517e599874da5abbd1f7ffa18172bde9bcf21a4a53ed4e138b9d278fed82a8a44eec1783d191d24e220c3ef7f2d4aa4090b4506b12c5e0d6fc7dcbbcbce8aa",
+    "profile": {
+      "display_name": "me",
+      "bio": "制作者のページ。編集機能テスト",
+      "joined_at": "2025-08-22 15:07:46"
+    }
+  },
+  "guest": {
+    "password": "scrypt:32768:8:1$vcWf6TWNeehDh3hw$138fe72a0715c8f9556a2631ffd18d1991872193ad416bdbb870b4f02feb9a33e952fa1743c42992582a68227f063cb8a1efb7f5c3ea82536da02643e8470855",
+    "profile": {
+      "display_name": "guest",
+      "bio": "",
+      "joined_at": "2025-08-22 15:54:21"
+    }
+  },
+  "assistant": {
+    "password": "scrypt:32768:8:1$CN9w7OwE0mLvZ0Gq$78550f272f1606b4a5afd39bd89294cafc82985d64cc4cb782d2068debecb536c6144fbcf9099d60b08097b540107177e6a50bd9b76cd770955341d87627f2aa",
+    "profile": {
+      "display_name": "assistant",
+      "bio": "",
+      "joined_at": "2025-08-22 15:54:37"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{profile.display_name }}のプロフィール</title>
+ <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="card">
+    <h1 style="margin:0">{{profile.display_name }} <span class="meta">@{{ username }}</span></h1>
+    <p class="meta">参加: {{profile.joined_at }}</p>
+    {% if profile.bio %}<p>{{ profile.bio }}</p>{% else %}<p class="meta">自己紹介はまだありません。</p>{% endif %}
+    {% if me == username %}
+      <p style="margin-top:.5rem">
+        <a class="btn-link" href="{{ url_for('edit_profile_get', username=username) }}">プロフィールを編集</a>
+      </p>
+    {% endif %}
+    <p><a href="{{ url_for('home') }}">← 一覧へ戻る</a></p>
+  </div>
+  <div class="card">{{profile.display_name}}の投稿一覧</div>
+  {% if posts %}
+    <ul style="list-style:none;padding:0;margin:0">
+      {% for m in posts %}
+        <li class="card">
+          <div class="meta">#{{ m.id }} / {{ m.created_at }} / いいね: {{ m.good or 0 }}
+            {% if m.updated_at %}<br>（{{ m.updated_at }}に編集済み）{% endif %}
+          </div>
+          <div style="white-space:pre-wrap">{{ m.text }}</div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="card meta">このユーザーの投稿はまだありません。</div>
+  {% endif %}
+</body>
+</html>

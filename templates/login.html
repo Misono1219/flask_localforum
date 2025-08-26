@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ログイン</title>
+
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 880px;
+      margin: 2rem auto;
+      line-height: 1.6;
+      background: #f0f9f0;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    ul { list-style: none; padding: 0; }
+    li.card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .meta { font-size: .9rem; color: #666; margin-bottom: .5rem; }
+    .controls { margin-top: .5rem; }
+    button {
+      border: none;
+      border-radius: 4px;
+      padding: .3rem .6rem;
+      cursor: pointer;
+      background: #4caf50;  
+      color: #fff;
+    }
+    button:hover { background: #45a049; }
+
+    form.inline button.delete {
+      background: #dc3545; 
+    }
+    form.inline button.delete:hover { background: #c82333; }
+  </style>
+</head>
+<body>
+  <h1>ログイン</h1>
+  <form method="POST">
+    <input type="text" name="username" placeholder="ユーザー名" required><br>
+    <input type="password" name="password" placeholder="パスワード" required><br>
+    <button type="submit">ログイン</button>
+  </form>
+
+  {% if error %}
+    <p style="color:red;">{{ error }}</p>
+  {% endif %}
+  <p><a href="{{ url_for('register') }}">新規ユーザー登録はこちら</a></p>
+  <p><a href="{{ url_for('home') }}">トップへ戻る</a></p>
+</body>
+</html>

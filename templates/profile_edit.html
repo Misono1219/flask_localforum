@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ username }} のプロフィール編集</title>
+ <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="card">
+    <h1 style="margin:0">{{ username }} のプロフィール編集</h1>
+    <form method="post" action="{{ url_for('edit_profile_post', username=username) }}">
+      <textarea id="bio" name="bio" maxlength="300"
+        placeholder="自己紹介を編集(300文字まで)">{{ profile.bio }}</textarea>
+      <div style="display:flex;gap:.5rem;align-items:center;margin-top:.75rem">
+        <button type="submit">保存</button>
+        <a href="{{ url_for('profile', username=username) }}">キャンセル</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>メッセージ一覧</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  {% if user %}
+  <p>ようこそ、{{ user }} さん</p>
+  <a href="{{ url_for('logout') }}">ログアウト</a>
+{% endif %}
+
+  <h1>メッセージ追加</h1>
+  <!-- Flask: @app.route("/", methods=["GET","POST"]) POSTで追加→redirect("/") -->
+  <form method="post">
+    <input type="text" name="text" placeholder="メッセージを入力" required>
+    <button type="submit">追加</button>
+  </form>
+  <form class="search-form" method="get" action="{{ url_for('home') }}" style="margin-top:.5rem; display:flex; gap:.5rem; align-items:center;">
+  <input type="text" name="q" placeholder="検索..." value="{{ q or '' }}" aria-label="検索キーワード">
+  <!-- 並び替えセレクト：選択時に送信 -->
+  <label for="sort" class="visually-hidden">並び替え</label>
+  <select id="sort" name="sort" onchange="this.form.submit()" aria-label="並び替え">
+    <option value="new"     {{ 'selected' if sort=='new' else '' }}>新しい順</option>
+    <option value="old"     {{ 'selected' if sort=='old' else '' }}>古い順</option>
+    <option value="updated" {{ 'selected' if sort=='updated' else '' }}>更新日時順</option>
+    <option value="likes"   {{ 'selected' if sort=='likes' else '' }}>いいね順</option>
+  </select>
+  <button type="submit">検索</button>
+</form>
+
+
+  <h2>一覧</h2>
+  <ul>
+  {% for msg in messages %}
+    <li class="card">
+      <div class="meta">
+        #{{ msg.id }} / 投稿者: <a href="{{ url_for('profile', username=msg.author) }}">{{ msg.author }}</a> / {{ msg.created_at }}/いいね:{{msg.good}} 件
+        <br>
+        {% if msg.updated_at %}（{{msg.updated_at}}に編集済み）{% endif %}
+      </div>
+      <div>{{ msg.text }}</div>
+      <!-- ボタン群 -->
+      <div class="controls">
+        <form class="inline" method="post" action="{{ url_for('mark_important', id=msg.id) }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+          <button type="submit">
+           ⭐いいね！
+          </button>
+        </form>
+        {% if msg.author == user %}
+          <a href="{{ url_for('edit_get', id=msg.id) }}">編集</a>
+          <form class="inline" method="post" action="{{ url_for('delete', id=msg.id) }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+            <button type="submit" class="delete">削除</button>
+          </form>
+        {% endif %}
+      </div>
+      {% if msg.comments %}
+        <ul class="comment-list">
+          {% for c in msg.comments %}
+            <li>{{ c.author }}: {{ c.text }} ({{ c.created_at }})</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      <form method="post" action="{{ url_for('comment', id=msg.id) }}" class="comment-form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <input type="text" name="comment" placeholder="コメントを追加" required maxlength="300">
+        <button type="submit">投稿</button>
+      </form>
+    </li>
+  {% endfor %}
+</ul>
+
+</body>
+</html>
